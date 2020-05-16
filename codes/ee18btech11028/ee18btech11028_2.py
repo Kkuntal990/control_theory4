@@ -45,9 +45,9 @@ y.append(k)
 plt.plot(x,y)
 plt.grid()
 # if using termux
-# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_1.pdf')
-# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_1.eps')
-# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_1.pdf"))
+plt.savefig('./figs/ee18btech11028/ee18btech11028_2_1.pdf')
+plt.savefig('./figs/ee18btech11028/ee18btech11028_2_1.eps')
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_1.pdf"))
 # else
 
 
@@ -62,9 +62,9 @@ plt.text(33500, -160, '$\omega_{1}$')
 plt.semilogx(w, phase,'g')          # Bode phase plot
 plt.grid() 
 # if using termux
-# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.pdf')
-# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.eps')
-# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_2.pdf"))
+plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.pdf')
+plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.eps')
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_2.pdf"))
 # else
 
 
@@ -98,9 +98,9 @@ plt.text(np.real(poles)[0]+50, np.imag(poles)[1], "P2")
 plt.xlim(-1100, 200)
 plt.grid()
 # if using termux
-# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_3.pdf')
-# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_3.eps')
-# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_3.pdf"))
+plt.savefig('./figs/ee18btech11028/ee18btech11028_2_3.pdf')
+plt.savefig('./figs/ee18btech11028/ee18btech11028_2_3.eps')
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_3.pdf"))
 # else
 
 
@@ -119,9 +119,9 @@ plt.plot(w1[idx], 0,'x', zorder=10, clip_on=False, color='g', label= '$\omega_{0
 plt.legend()
 plt.grid()
 # if using termux
-# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_4.pdf')
-# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_4.eps')
-# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_4.pdf"))
+plt.savefig('./figs/ee18btech11028/ee18btech11028_2_4.pdf')
+plt.savefig('./figs/ee18btech11028/ee18btech11028_2_4.eps')
+subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_4.pdf"))
 # else
 
 
