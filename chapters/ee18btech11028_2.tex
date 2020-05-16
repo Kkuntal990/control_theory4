@@ -1,10 +1,8 @@
-\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+\begin{enumerate}[label=\arabic*.,ref=\theenumi]
 \numberwithin{equation}{enumi}
-\item The op amp in the circuit of Fig. \ref{fig:ee18btech11028_2_q}
-has an open-loop gain of $10^{5}$ and a single-pole rolloff with
-$\omega_{3dB}$ = 10 rad/s.
+\item The op amp in the circuit of Fig. \ref{fig:ee18btech11028_2_q} has an open-loop gain of $10^{5}$ and a single-pole rolloff with $\omega_{3dB}$ = 10 rad/s.
 
-\renewcommand{\thefigure}{\theenumi.\arabic{figure}}
+%\renewcommand{\thefigure}{\theenumi.\arabic{figure}}
 %
 \begin{figure}[!ht]
 	\begin{center}
@@ -24,7 +22,7 @@ $\omega_{3dB}$ = 10 rad/s.
 \item Sketch a Bode plot for the loop gain.
 \\
 \solution
-The open loop gain is given as,
+Op-amp in our question has an open loop gain characterised by a single pole $P_{11} $ from table \ref{table:ee18btech11028_2_parameters} i.e.
 \begin{align}
     G(s) = \frac{10^5}{1 + \frac{s}{P_{11}}}
         \label{eq:ee18btech11028_2_2}
@@ -35,7 +33,7 @@ Using voltage division on Fig. \ref{fig:ee18btech11028_2_q} we obtain,
     H(s) = \frac{V_{f}}{V_{o}}
      &= \frac{\frac{1}{sC_{f}}}{R_{f} + \frac{1}{sC_{f}}}
     \\
-    \implies H(s) = \frac{1}{1 + \frac{s}{P_{2}}}
+    \implies H(s) = \frac{1}{1 + \frac{s}{P_{21}}}
         \label{eq:ee18btech11028_2_1}
 \end{align}
 where, 
@@ -48,7 +46,7 @@ The loop gain,
     GH(s) = \frac{10^5}{(1+\frac{s}{10})(1 + \frac{s}{1000})}
 \end{align}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=\columnwidth]{./figs/ee18btech11028/ee18btech11028_2_1.eps}
     \caption{Magnitude plot}
@@ -56,7 +54,7 @@ The loop gain,
 \end{figure}
 
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=\columnwidth]{./figs/ee18btech11028/ee18btech11028_2_2.eps}
     \caption{Phase plot}
