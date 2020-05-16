@@ -1,9 +1,26 @@
 \begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
 \numberwithin{equation}{enumi}
-\item The op amp in the circuit of Fig. P10.100
+\item The op amp in the circuit of Fig. \ref{fig:ee18btech11028_2_q}
 has an open-loop gain of $10^{5}$ and a single-pole rolloff with
 $\omega_{3dB}$ = 10 rad/s.
 
+\renewcommand{\thefigure}{\theenumi.\arabic{figure}}
+%
+\begin{figure}[!ht]
+	\begin{center}
+		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11028/question_fig.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11028_2_q}
+\end{figure}
+%
+\begin{table}[!ht]
+    \centering
+    \input{./tables/ee18btech11028/ee18btech11028_2_t1.tex}
+    \caption{}
+    \label{table:ee18btech11028_2_parameters}
+\end{table}
+\item Sketch a Bode plot for the loop gain.
 
 
 \end{enumerate}
