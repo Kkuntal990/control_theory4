@@ -60,7 +60,7 @@ plt.ylim(phase[-1]-10, 0)
 plt.vlines([31500], phase[-1]-10, 0, linestyles = 'dashed', color = 'r')
 plt.text(33500, -160, '$\omega_{1}$')
 plt.semilogx(w, phase,'g')          # Bode phase plot
-plt.grid() 
+plt.grid()
 # if using termux
 plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.pdf')
 plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.eps')
