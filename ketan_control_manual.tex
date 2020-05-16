@@ -33,7 +33,7 @@
 \usepackage{mathtools}
 \usepackage{steinmetz}
 \usepackage{tikz}
-\usepackage{circuitikz}
+\usepackage[american]{circuitikz}
 \usepackage{verbatim}
 \usepackage{tfrupee}
 \usepackage[breaklinks=true]{hyperref}
@@ -42,6 +42,7 @@
 \usetkzobj{all}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{shapes.geometric}
+\usetikzlibrary{positioning, fit, calc}
 \newif\iflabrev
 \usepackage{listings}
     \usepackage{color}                                            %%
@@ -157,13 +158,13 @@ columns=fullflexible
 \vspace{3cm}
 \title{
 %	\logo{
-Control Systems
+OPAMP Compensation
 %	}
 }
-\author{ G V V Sharma$^{*}$% <-this % stops a space
+\author{K.Surya Prakash $^{*}$\\ { ee18btech11026@iith.ac.in}% <-this % stops a space
 	\thanks{*The author is with the Department
 		of Electrical Engineering, Indian Institute of Technology, Hyderabad
-		502285 India e-mail:  gadepall@iith.ac.in. All content in this manual is released under GNU GPL.  Free and open source.}
+		502285 India. All content in this manual is released under GNU GPL.  Free and open source.}
 	
 }	
 %\title{
@@ -219,8 +220,8 @@ Control Systems
 % column for its text to clear the IEEEpubid mark.
 % make the title area
 \maketitle
-\newpage
-\tableofcontents
+%\newpage
+%\tableofcontents
 \bigskip
 \renewcommand{\thefigure}{\theenumi}
 \renewcommand{\thetable}{\theenumi}
@@ -249,87 +250,27 @@ Control Systems
 % For peerreview papers, this IEEEtran command inserts a page break and
 % creates the second title. It will be ignored for other modes.
 %\IEEEpeerreviewmaketitle
-\begin{abstract}
-The objective of this manual is to introduce control system design at an elementary level.
-\end{abstract}
-Download python codes using 
-\begin{lstlisting}
-svn co https://github.com/gadepall/school/trunk/control/ketan/codes
-\end{lstlisting}
-\section{Polar Plot}
-\subsection{Introduction}
-%\input{./chapters/ee18btech11028.tex}
-\subsection{Example}
-%\input{./chapters/ee18btech11023.tex}
-\subsection{Example}
-%\input{./chapters/ee18btech11012.tex}
-\subsection{Example}
-%\input{./chapters/ee18btech11033.tex}
-\subsection{Example}
-%\input{./chapters/ee18btech11002.tex}
-\subsection{Example}
-%\input{./chapters/ee18btech11042.tex}
-\subsection{Example}
-%\input{./chapters/ee18btech11029.tex}
+%\begin{abstract}
+%This manual is an introduction to control systems in feedback circuits. Links to sample Python codes are available in the text.  
+%\end{abstract}
+%Download python codes using 
+%\begin{lstlisting}
+%svn co https://github.com/gadepall/school/trunk/control/feedback/codes
+%\end{lstlisting}
+%\section{Feedback Voltage Amplifier: Series-Shunt}
+%\input{./chapters/ee18btech11026.tex}
+\input{./chapters/ee18btech11028_2.tex}
 %
-\section{Bode Plot}
-\subsection{Gain and Phase Margin}
-%\input{./chapters/ee18btech11049.tex}
-\subsection{Example}
-%\input{./chapters/ee18btech11048.tex}
-\subsection{Example}
-%\input{./chapters/es17btech11002.tex}
 %
-\section{PID Controller}
-\subsection{Introduction}
-%\input{./chapters/ee18btech11021.tex}
-%\input{./chapters/ee18btech11029.tex}
-%\section{Signal Flow Graph}
-%\subsection{Mason's Gain Formula}
-%\input{./chapters/ee18btech11003.tex}
-%\subsection{Matrix Formula}
-%\input{./chapters/ee18btech11007_1.tex}
-%\section{Bode Plot}
-%\subsection{Introduction}
-%\input{./chapters/ee18btech11001.tex}
-%\subsection{Example}
-%\input{./chapters/ee18btech11009.tex}
-%\section{Second order System}
-%\subsection{Damping}
-%\input{./chapters/ee18btech11012.tex}
-%\subsection{Example}
-%\input{./chapters/ee18btech11002.tex}
-%\section{Routh Hurwitz Criterion}
-%\subsection{Routh Array}
+%\section{Feedback Current Amplifier: Shunt-Series}
+%\subsection{Ideal Case}
 %\input{./chapters/ee18btech11014.tex}
-%\subsection{Marginal Stability}
-%\input{./chapters/ee18btech11005.tex}
-%\subsection{Stability}
-%\input{./chapters/ee18btech11008.tex}
-%\subsection{Example}
-%\input{./chapters/ee18btech11020.tex}
-%\section{State-Space Model}
-%\subsection{Controllability and Observability}
-%%\input{./chapters/ee18btech11004.tex}
-%\input{./chapters/ee18btech11006.tex}
+%\subsection{Practical Case}
+%\input{./chapters/ee18btech11014_1.tex}
 %
-%\subsection{Second Order System}
-%\input{./chapters/ee18btech11011.tex}
-%\subsection{Example}
-%\input{./chapters/ee18btech11023.tex}
+%\section{Feedback Current Amplifier: Example}
+%\input{./chapters/ee18btech11021_6.tex}
 %
-\section{Nyquist Plot}
-\input{./chapters/ee18btech11028_1.tex}
-%
-%\section{Compensators}
-%\subsection{Phase Lead}
-%%\input{./chapters/ee18btech11010.tex}
-%\input{./chapters/ee18btech11021.tex}
-%\section{Gain Margin}
-%\input{./chapters/ee18btech11016.tex}
-%\section{Phase Margin}
-%\input{./chapters/ee18btech11017.tex}
-%\section{Oscillator}
-%\input{./chapters/ee18btech11019.tex}
-%
+%\section{Feedback Transconductance Amplifier: Series-Series}
+%\input{./chapters/EE18BTECH11007.tex}
 \end{document}
