@@ -6,6 +6,7 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 from scipy import signal
+import control
 
 #if using termux
 import subprocess
@@ -33,9 +34,8 @@ plt.semilogx(w, mag)    # Bode magnitude plot
 plt.vlines([10, 1000], -100,100,linestyles = 'dashed', color = 'b')
 plt.text(1e5, -45, "-40dB/dec", rotation = -40)
 plt.text(1e2*0.5, 70, "-20dB/dec", rotation = -25)
-plt.plot(31500, 0, 'o')
 plt.vlines([31500], -100, 0, linestyles = 'dashed', color = 'r')
-plt.text(32500, 0, '$\omega_{1}$')
+plt.text(32500-5000, -115, '$\omega_{1}$', color='r')
 y = []
 k = 100;
 for i in range(len(x)-1):
@@ -43,11 +43,12 @@ for i in range(len(x)-1):
     k+=Slopes[i]
 y.append(k)
 plt.plot(x,y)
+plt.plot(31500, 0, 'o')
 plt.grid()
 # if using termux
-plt.savefig('./figs/ee18btech11028/ee18btech11028_2_1.pdf')
-plt.savefig('./figs/ee18btech11028/ee18btech11028_2_1.eps')
-subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_1.pdf"))
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_1.pdf')
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_1.eps')
+# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_1.pdf"))
 # else
 
 
@@ -56,15 +57,16 @@ plt.figure()
 plt.xlabel("$\omega$ (rad/s)")
 plt.ylabel('Phase (deg)')
 plt.title('Phase plot')
+plt.xlim(1, 1e7)
 plt.ylim(phase[-1]-10, 0)
 plt.vlines([31500], phase[-1]-10, 0, linestyles = 'dashed', color = 'r')
-plt.text(33500, -160, '$\omega_{1}$')
+plt.text(32500-5000, phase[-1]-23, '$\omega_{1}$', color='r')
 plt.semilogx(w, phase,'g')          # Bode phase plot
 plt.grid()
 # if using termux
-plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.pdf')
-plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.eps')
-subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_2.pdf"))
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.pdf')
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_2.eps')
+# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_2.pdf"))
 # else
 
 
@@ -83,10 +85,11 @@ poles = np.array(poles)
 
 
 plt.figure()
-plt.xlabel("Re{T(j$\omega$)}")
+plt.xlabel("$Re$")
 plt.axhline(linewidth=2, color='black')
 plt.axvline(linewidth=2, color = 'black')
-plt.ylabel('Im{T(j$\omega$)}')
+plt.ylabel('$Im$')
+plt.title("Pole zero plot")
 plt.plot(np.real(zeros), np.imag(zeros), 'or', label = 'Zeros')
 plt.plot(np.real(poles), np.imag(poles), 'Xb', label = 'Poles')
 plt.vlines(np.real(poles)[0], -np.imag(poles)[0], np.imag(poles)[0], linestyles = 'dashed', color = 'r')
@@ -98,31 +101,56 @@ plt.text(np.real(poles)[0]+50, np.imag(poles)[1], "P2")
 plt.xlim(-1100, 200)
 plt.grid()
 # if using termux
-plt.savefig('./figs/ee18btech11028/ee18btech11028_2_3.pdf')
-plt.savefig('./figs/ee18btech11028/ee18btech11028_2_3.eps')
-subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_3.pdf"))
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_3.pdf')
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_3.eps')
+# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_3.pdf"))
 # else
 
 
-
-g = np.linspace(0, 1e5, 10000)
-w1, H = signal.freqresp(s2, g)
+w, Magf, Phasef = signal.bode(s2, w)
 plt.figure()
-plt.plot(w1, abs(H))
-plt.ylabel('')
-plt.ylim(0,1100)
+plt.subplot(2,1,1)
+plt.semilogx(w, Magf)
 plt.xlabel("$\omega$ (rad/s)")
-plt.ylabel("|T(j$\omega$|")
-idx = (np.argmax(abs(H)))
-plt.vlines(w1[idx], 0 , 1000, linestyles = 'dashed', color = 'r')
-plt.plot(w1[idx], 0,'x', zorder=10, clip_on=False, color='g', label= '$\omega_{0}$ = ' + "{:e}".format(w1[idx]))
+plt.ylabel("20log|T(j$\omega$| (dB)")
+plt.title("Bode plot")
+idx = (np.argmax(Magf))
+plt.ylim(-20, 65)
+plt.vlines(w[idx], -20 , 60, linestyles = 'dashed', color = 'g')
+plt.plot(w[idx], -20,'x', zorder=10, clip_on=False, color='r', label= '$\omega_{0}$ = ' + "{:e}".format(w[idx]))
+plt.text(w[idx]-5000, -26,'$\omega_{0}$',color = 'r')
 plt.legend()
 plt.grid()
+plt.subplot(2,1,2)
+plt.semilogx(w, Phasef)
+plt.grid()
 # if using termux
-plt.savefig('./figs/ee18btech11028/ee18btech11028_2_4.pdf')
-plt.savefig('./figs/ee18btech11028/ee18btech11028_2_4.eps')
-subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_4.pdf"))
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_4.pdf')
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_4.eps')
+# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_4.pdf"))
 # else
 
 
-#plt.show()
+
+#For step response
+T = np.linspace(0, 0.012, 10000)
+sys = control.tf(Numf, Denf)
+T, yout  = control.step_response(sys, T)
+
+plt.figure()
+plt.xlim(0, 0.013)
+plt.xlabel("Time (seconds)")
+plt.ylabel("|$V_{0}$(t)|")
+plt.title('Step response')
+plt.grid()
+plt.plot(T, yout)
+# if using termux
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_5.pdf')
+# plt.savefig('./figs/ee18btech11028/ee18btech11028_2_5.eps')
+# subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/ee18btech11028_2_5.pdf"))
+# else
+
+
+
+
+plt.show()
