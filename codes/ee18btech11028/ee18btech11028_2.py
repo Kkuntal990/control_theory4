@@ -14,7 +14,7 @@ import shlex
 #end if
 
 
-
+#Defining the system
 Slopes = np.array([0, 0, -20, -20, -40, -40, -40, -40, -40, -40]);
 x = np.array([0 ,1,10,100,1000,10000,1e5,1e6,1e7])
 Num = [1e9]
@@ -24,7 +24,7 @@ w = np.logspace(0, 7, 1000)
 w, mag, phase = signal.bode(s1, w)
 
 
-
+#plotting the bode plot of loop gain
 plt.figure()
 plt.xlabel("$\omega$ (rad/s)")
 plt.ylabel("Magnitude (dB)")
@@ -52,7 +52,7 @@ subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/fig_1.pdf"))
 # else
 
 
-
+#Phase of loop gain
 plt.figure()
 plt.xlabel("$\omega$ (rad/s)")
 plt.ylabel('Phase (deg)')
@@ -72,7 +72,7 @@ subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/fig_2.pdf"))
 
 
 
-
+#defining closed loop system
 Numf = [1e6, 1e9]
 Denf = [1, 1010, 1e4+1e9]
 s2 = signal.lti(Numf ,Denf)
@@ -83,7 +83,7 @@ poles = np.array(poles)
 
 
 
-
+#pole zero plot
 plt.figure()
 plt.xlabel("$Re$")
 plt.axhline(linewidth=2, color='black')
@@ -107,6 +107,7 @@ subprocess.run(shlex.split("termux-open ./figs/ee18btech11028/fig_3.pdf"))
 # else
 
 
+#Bode plot of closed loop system
 w, Magf, Phasef = signal.bode(s2, w)
 plt.figure()
 plt.subplot(2,1,1)
