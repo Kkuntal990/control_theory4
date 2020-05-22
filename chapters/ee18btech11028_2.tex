@@ -148,7 +148,7 @@ We can calculate the steady state output voltage using Final value theorem,
 \begin{align}
     \lim_{t\to\infty} V_{o}(t) = \lim_{s \to 0} sY_{\gamma} \approx 1
 \end{align}
-
+which is analogous to circuit in fig. \ref{fig:ee18btech11028_2_5}.
 \item Simulate the circuit in Ngspice.
 \\
 \solution Following readme provides instructions about the simulation
@@ -177,7 +177,32 @@ Simulation result,
     \label{fig:ee18btech11028_2_6}
 \end{figure}
 
+There is very minute difference in amplitude of the initial response of the circuit due to non-ideal nature of the circuit componenets.
+\item
+Circuit level schematic of op-amp used for simulation,
+\begin{figure}[!ht]
+	\begin{center}
+		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11028/op_amp_circuit.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11028_2_7}
+\end{figure}
 
+Since we need a single pole op-amp having $\omega_{3db}  =  10 rad/s$  $(f_{p1} = \frac{10}{2\pi} Hz)$,
+we choose a $R_{p1}$ appropriately and calculate the value of $C_{p1}$ according to our single pole roll off frequency.
+\begin{align}
+    R_{p1}  = 1000 \ohm
+    \\
+    C_{p1} = \frac{1}{2  \pi f_{p1} R_{p1}}
+\end{align}
+
+
+\begin{table}[!ht]
+    \centering
+    \input{./tables/ee18btech11028/ee18btech11028_2_t2.tex}
+    \caption{}
+    \label{table:ee18btech11028_2_opamp_circuit}
+\end{table}
 
 
 \item The following python code plots  Fig. \ref{fig:ee18btech11028_2_1}, Fig. \ref{fig:ee18btech11028_2_2}, Fig. \ref{fig:ee18btech11028_2_3}, Fig. \ref{fig:ee18btech11028_2_4} and Fig. \ref{fig:ee18btech11028_2_5}.
