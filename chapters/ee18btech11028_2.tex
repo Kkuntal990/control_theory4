@@ -48,7 +48,7 @@ The loop gain is,
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/ee18btech11028_2_1.eps}
+    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/fig_1.eps}
     \caption{Magnitude plot}
     \label{fig:ee18btech11028_2_1}
 \end{figure}
@@ -56,7 +56,7 @@ The loop gain is,
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/ee18btech11028_2_2.eps}
+    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/fig_2.eps}
     \caption{Phase plot}
     \label{fig:ee18btech11028_2_2}
 \end{figure}
@@ -72,7 +72,6 @@ More precise value can be obtained by solving for $\omega$ in,
 \end{align}
 
 Thus, 
-
 \begin{align}
      \omega_{1} = 3.15 \times 10^{4} rad/s
 \end{align}
@@ -97,6 +96,7 @@ From \eqref{eq:ee18btech11028_2_1} and \eqref{eq:ee18btech11028_2_2} we have,
 \begin{align}
     \implies T(s) = \frac{10^{6}(s+1000)}{s^{2} + 1010s + 10^{4} + 10^{9}}
     \\
+     \label{eq:ee18btech11028_2_3}
 \end{align}
 
 Zeros of closed loop transfer function,
@@ -113,7 +113,7 @@ Similarly for poles,
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/ee18btech11028_2_3.eps}
+    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/fig_3.eps}
     \caption{Pole zero plot}
     \label{fig:ee18btech11028_2_3}
 \end{figure}
@@ -121,14 +121,66 @@ Similarly for poles,
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/ee18btech11028_2_4.eps}
-    \caption{Closed loop magnitude plot}
+    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/fig_4.eps}
+    \caption{Closed loop bode plot}
     \label{fig:ee18btech11028_2_4}
 \end{figure}
 
 Poles are at $\omega_{0} = 3.16 \times 10^{4}$
 
-\item The following python code plots  Fig. \ref{fig:ee18btech11028_2_1}, Fig. \ref{fig:ee18btech11028_2_2}, Fig. \ref{fig:ee18btech11028_2_3} and Fig. \ref{fig:ee18btech11028_2_4}.
+\item Closed loop unit step response.
+\\
+\solution 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/step_response.eps}
+    \caption{Unit step response}
+    \label{fig:ee18btech11028_2_5}
+\end{figure}
+
+
+From \eqref{eq:ee18btech11028_2_3} Unit step response is,
+\begin{align}
+    Y_{\gamma} = \frac{T(s)}{s}
+\end{align}
+
+We can calculate the steady state output voltage using Final value theorem,
+\begin{align}
+    \lim_{t\to\infty} V_{o}(t) = \lim_{s \to 0} sY_{\gamma} \approx 1
+\end{align}
+
+\item Simulate the circuit in Ngspice.
+\\
+\solution Following readme provides instructions about the simulation
+
+\begin{lstlisting}
+codes/ee18btech11028/spice/README.md
+\end{lstlisting}
+
+The following netlist simulates the closed loop unit step response for circuit in fig. \ref{fig:ee18btech11028_2_q}
+\begin{lstlisting}
+codes/ee18btech11028/spice/step_response.net
+\end{lstlisting}
+of which data is stored in 
+\begin{lstlisting}
+codes/ee18btech11028/spice/ee18btech11028_sim.dat
+\end{lstlisting}
+which is plotted using python code in,
+\begin{lstlisting}
+codes/ee18btech11028/spice/step.py
+\end{lstlisting}
+Simulation result,
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\columnwidth]{./figs/ee18btech11028/spice_step_response.eps}
+    \caption{spice simulation step response}
+    \label{fig:ee18btech11028_2_6}
+\end{figure}
+
+
+
+
+\item The following python code plots  Fig. \ref{fig:ee18btech11028_2_1}, Fig. \ref{fig:ee18btech11028_2_2}, Fig. \ref{fig:ee18btech11028_2_3}, Fig. \ref{fig:ee18btech11028_2_4} and Fig. \ref{fig:ee18btech11028_2_5}.
 \begin{lstlisting}
 codes/ee18btech11028/ee18btech11028_2.py
 \end{lstlisting}
