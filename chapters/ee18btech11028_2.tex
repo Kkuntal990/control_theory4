@@ -146,12 +146,12 @@ Poles are at $\omega_{0} = 3.16 \times 10^{4}$
 
 From \eqref{eq:ee18btech11028_2_3} Unit step response is,
 \begin{align}
-    Y_{\gamma} = \frac{T(s)}{s}
+    Y_{\gamma}(s) = \frac{T(s)}{s}
 \end{align}
 
 We can calculate the steady state output voltage using Final value theorem,
 \begin{align}
-    \lim_{t\to\infty} V_{o}(t) = \lim_{s \to 0} sY_{\gamma} \approx 1
+    \lim_{t\to\infty} V_{o}(t) = \lim_{s \to 0} sY_{\gamma}(s) \approx 1
 \end{align}
 which is analogous to plot in fig. \ref{fig:ee18btech11028_2_5}.
 \item Simulate the circuit in Ngspice.
@@ -174,7 +174,6 @@ which is plotted using python code in,
 \begin{lstlisting}
 codes/ee18btech11028/spice/step.py
 \end{lstlisting}
-Simulation result,
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\columnwidth]{./figs/ee18btech11028/spice_step_response.eps}
@@ -182,7 +181,7 @@ Simulation result,
     \label{fig:ee18btech11028_2_6}
 \end{figure}
 
-There is very minute difference in amplitude of the initial response of the circuit due to non-ideal nature of the circuit componenets.
+As can be noticed in fig. \ref{fig:ee18btech11028_2_6} there is very minute difference in amplitude of the initial response of the circuit due to non-ideal nature of the circuit componenets. But rest of the response is identical including the steady state output voltage of 1.
 \item
 Circuit level schematic of op-amp used for simulation,
 \begin{figure}[!ht]
@@ -192,7 +191,7 @@ Circuit level schematic of op-amp used for simulation,
 \caption{}
 \label{fig:ee18btech11028_2_7}
 \end{figure}
-
+is in fig. \ref{fig:ee18btech11028_2_7}
 Since we need a single pole op-amp having $\omega_{3db}  =  10 rad/s$  $(f_{p1} = \frac{10}{2\pi} Hz)$,
 we choose a $R_{p1}$ appropriately and calculate the value of $C_{p1}$ according to our single pole roll off frequency.
 \begin{align}
@@ -200,8 +199,7 @@ we choose a $R_{p1}$ appropriately and calculate the value of $C_{p1}$ according
     \\
     C_{p1} = \frac{1}{2  \pi f_{p1} R_{p1}}
 \end{align}
-
-
+The values corresponding to the components used for op-amp are given in table \ref{table:ee18btech11028_2_opamp_circuit}. 
 \begin{table}[!ht]
     \centering
     \input{./tables/ee18btech11028/ee18btech11028_2_t2.tex}
