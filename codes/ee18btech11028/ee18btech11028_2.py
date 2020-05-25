@@ -13,6 +13,12 @@ import subprocess
 import shlex
 #end if
 
+#function to find the values magnitude, phase margin ,etc
+def find_nearest(array, value):
+    array = np.asarray(array)
+    idx = (np.abs(array - value)).argmin()
+    return idx
+
 
 #Defining the system
 Slopes = np.array([0, 0, -20, -20, -40, -40, -40, -40, -40, -40]);
@@ -23,7 +29,9 @@ s1 = signal.lti(Num ,Den)
 w = np.logspace(0, 7, 1000)
 w, mag, phase = signal.bode(s1, w)
 
-
+id1 = find_nearest(mag, 1)
+#print("Frequecy of unity magnitude is around: " + str(w[id1]))
+#print("Hence PM is :" + str(180+phase[id1]))
 #plotting the bode plot of loop gain
 plt.figure()
 plt.xlabel("$\omega$ (rad/s)")
