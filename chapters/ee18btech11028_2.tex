@@ -23,7 +23,8 @@
 (c)Find the closed-loop transfer function, including its zero
 and poles. Sketch a pole-zero plot. Sketch the magnitude of
 the transfer function versus frequency, and label the important parameters on your sketch.
-(d)Find the unit step response of the system.
+(d) Find the unit step response of the system.
+
 \item Sketch a Bode plot for the loop gain.
 \\
 \solution
@@ -34,17 +35,17 @@ Op-amp in our question has an open loop gain characterised by a single pole $P_{
 \end{align}
 \begin{figure}[!ht]
 	\begin{center}
-		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11028/feedback_loop.tex}}
+		\resizebox{\columnwidth/2}{!}{\input{./figs/ee18btech11028/feedback_loop.tex}}
+		
 	\end{center}
-\caption{}
+\caption{Feedback loop}
 \label{fig:ee18btech11028_2_h}
 \end{figure}
-Using voltage division on Fig. \ref{fig:ee18btech11028_2_h} we obtain,
+Also, feedback gain from Fig. \ref{fig:ee18btech11028_2_h},
 \begin{align}
     H(s) = \frac{V_{f}}{V_{o}}
-     &= \frac{\frac{1}{sC_{f}}}{R_{f} + \frac{1}{sC_{f}}}
-    \\
-    \implies H(s) = \frac{1}{1 + \frac{s}{P_{21}}}
+    &= \frac{\frac{1}{sC_{f}}}{R_{f} + \frac{1}{sC_{f}}}
+    &= \frac{1}{1 + \frac{s}{P_{21}}}
         \label{eq:ee18btech11028_2_1}
 \end{align}
 where, 
@@ -54,7 +55,7 @@ where,
 
 The loop gain is, 
 \begin{align}
-    GH(s) = \frac{10^5}{(1+\frac{s}{10})(1 + \frac{s}{1000})}
+    GH(s) = \frac{10^5}{\brak{1+\frac{s}{10}}\brak{1 + \frac{s}{1000}}}
 \end{align}
 
 \begin{figure}[!ht]
@@ -71,8 +72,7 @@ The loop gain is,
     \caption{Phase plot}
     \label{fig:ee18btech11028_2_2}
 \end{figure}
-
-
+Corresponding plots are in Fig. \ref{fig:ee18btech11028_2_1} and Fig. \ref{fig:ee18btech11028_2_2} .
 \item Find the frequency at which $ |GH|= 1$, and find the corresponding phase margin.
 \\
 \solution
@@ -160,6 +160,10 @@ We can calculate the steady state output voltage using Final value theorem,
     \lim_{t\to\infty} V_{o}(t) = \lim_{s \to 0} sY_{\gamma}(s) \approx 1
 \end{align}
 which is analogous to plot in fig. \ref{fig:ee18btech11028_2_5}.
+\item The following python code plots  Fig. \ref{fig:ee18btech11028_2_1}, Fig. \ref{fig:ee18btech11028_2_2}, Fig. \ref{fig:ee18btech11028_2_3}, Fig. \ref{fig:ee18btech11028_2_4} and Fig. \ref{fig:ee18btech11028_2_5}.
+\begin{lstlisting}
+codes/ee18btech11028/ee18btech11028_2.py
+\end{lstlisting}
 \item Simulate the circuit in Ngspice.
 \\
 \solution Following readme provides instructions about the simulation
@@ -171,10 +175,6 @@ codes/ee18btech11028/spice/README.md
 The following netlist simulates the closed loop unit step response for circuit in fig. \ref{fig:ee18btech11028_2_q}
 \begin{lstlisting}
 codes/ee18btech11028/spice/step_response.net
-\end{lstlisting}
-of which data is stored in 
-\begin{lstlisting}
-codes/ee18btech11028/spice/ee18btech11028_sim.dat
 \end{lstlisting}
 which is plotted using python code in,
 \begin{lstlisting}
@@ -192,7 +192,7 @@ As can be noticed in fig. \ref{fig:ee18btech11028_2_6} there is very minute diff
 Circuit level schematic of op-amp used for simulation,
 \begin{figure}[!ht]
 	\begin{center}
-		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11028/op_amp_circuit.tex}}
+		\resizebox{4\columnwidth/5}{!}{\input{./figs/ee18btech11028/op_amp_circuit.tex}}
 	\end{center}
 \caption{}
 \label{fig:ee18btech11028_2_7}
@@ -214,9 +214,6 @@ The values corresponding to the components used for op-amp are given in table \r
 \end{table}
 
 
-\item The following python code plots  Fig. \ref{fig:ee18btech11028_2_1}, Fig. \ref{fig:ee18btech11028_2_2}, Fig. \ref{fig:ee18btech11028_2_3}, Fig. \ref{fig:ee18btech11028_2_4} and Fig. \ref{fig:ee18btech11028_2_5}.
-\begin{lstlisting}
-codes/ee18btech11028/ee18btech11028_2.py
-\end{lstlisting}
+
 
 \end{enumerate}
