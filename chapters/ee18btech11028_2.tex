@@ -32,8 +32,14 @@ Op-amp in our question has an open loop gain characterised by a single pole $P_{
     G(s) = \frac{10^5}{1 + \frac{s}{P_{11}}}
         \label{eq:ee18btech11028_2_2}
 \end{align}
-
-Using voltage division on Fig. \ref{fig:ee18btech11028_2_q} we obtain,
+\begin{figure}[!ht]
+	\begin{center}
+		\resizebox{\columnwidth}{!}{\input{./figs/ee18btech11028/feedback_loop.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11028_2_h}
+\end{figure}
+Using voltage division on Fig. \ref{fig:ee18btech11028_2_h} we obtain,
 \begin{align}
     H(s) = \frac{V_{f}}{V_{o}}
      &= \frac{\frac{1}{sC_{f}}}{R_{f} + \frac{1}{sC_{f}}}
