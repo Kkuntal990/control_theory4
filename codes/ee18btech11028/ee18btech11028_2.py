@@ -89,7 +89,8 @@ poles = signal.ZerosPolesGain(s2).poles
 zeros = np.array(zeros)
 poles = np.array(poles)
 
-
+#print("Zeros of closed loop system are: " +str(zeros))
+#print("Poles of closed loop system are: " +str(poles))
 
 #pole zero plot
 plt.figure()
